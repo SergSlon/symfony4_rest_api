@@ -20,6 +20,9 @@
     "doctrine/event-manager": {
         "version": "v1.0.0"
     },
+    "doctrine/inflector": {
+        "version": "v1.3.0"
+    },
     "doctrine/instantiator": {
         "version": "1.2.0"
     },
@@ -31,6 +34,18 @@
     },
     "doctrine/reflection": {
         "version": "v1.0.0"
+    },
+    "friendsofsymfony/rest-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cad41ef93d6150067ae2bb3c7fd729492dff6f0a"
+        },
+        "files": [
+            "./config/packages/fos_rest.yaml"
+        ]
     },
     "hoa/compiler": {
         "version": "3.17.08.08"
@@ -225,8 +240,14 @@
             "./config/routes.yaml"
         ]
     },
+    "symfony/security-core": {
+        "version": "v4.3.4"
+    },
     "symfony/service-contracts": {
         "version": "v1.1.6"
+    },
+    "symfony/templating": {
+        "version": "v4.3.4"
     },
     "symfony/var-exporter": {
         "version": "v4.3.4"
@@ -242,5 +263,11 @@
     },
     "symfony/yaml": {
         "version": "v4.3.4"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
+    },
+    "willdurand/negotiation": {
+        "version": "v2.3.1"
     }
 }
