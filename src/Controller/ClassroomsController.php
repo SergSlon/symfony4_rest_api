@@ -2,19 +2,21 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
-class ClassroomsController extends AbstractController
+class ClassroomsController extends AbstractFOSRestController
 {
     /**
-     * @Route("/classrooms", name="classrooms")
+     * @Rest\Get("/classrooms", name="classrooms")
      */
-    public function index()
+    public function getAction()
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ClassroomsController.php',
-        ]);
+        return $this->json(
+            [
+                'message' => 'Welcome to your new controller!',
+                'path' => 'src/Controller/ClassroomsController.php',
+            ]
+        );
     }
 }
