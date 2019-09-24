@@ -27,7 +27,7 @@ class Classroom
     private $create_date;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default": "0"})
      */
     private $active;
 

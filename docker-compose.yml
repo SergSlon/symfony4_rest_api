@@ -1,0 +1,53 @@
+version: '3.7'
+
+# define the network
+networks:
+  web-network:
+
+services:
+  nginx:
+    build:
+      args:
+        VERSION: $NGINX_VERSION
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+      target: dev
+    volumes:
+      - ./assets:/app/public
+    depends_on:
+      - php-fpm
+    ports:
+      - 8080:80
+    networks:
+      - web-network
+
+  php-fpm:
+    build:
+      args:
+        VERSION: $PHP_VERSION
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
+      target: dev
+    volumes:
+      - .:/app
+    command: sh -c 'composer install --no-interaction --optimize-autoloader && php-fpm'
+    networks:
+      - web-network
+#    ports:
+#      - 9001:9000
+
+  mysql:
+    build:
+      args:
+        VERSION: $MYSQL_VERSION
+      context: ./docker/mysql
+    environment:
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    networks:
+      - web-network
+    ports:
+      - "3333:3306"
+    container_name: $MYSQL_HOST
